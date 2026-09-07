@@ -1,69 +1,122 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useState } from "react";
+import { C, tabs } from "@/app/data/constants";
+import Icon from "@/app/components/Icon";
+import OverviewTab from "@/app/tabs/OverviewTab";
+import OpportunitiesTab from "@/app/tabs/OpportunitiesTab";
+import TopClientsTab from "@/app/tabs/TopClientsTab";
+import StatusTab from "@/app/tabs/StatusTab";
+import ResidencesTab from "@/app/tabs/ResidencesTab";
+import PaymentsTab from "@/app/tabs/PaymentsTab";
+import OwnersTab from "@/app/tabs/OwnersTab";
+import EngagementTab from "@/app/tabs/EngagementTab";
+import FeaturesTab from "@/app/tabs/FeaturesTab";
+import ActionsTab from "@/app/tabs/ActionsTab";
+import PitchTab from "@/app/tabs/PitchTab";
+
+export default function ImmoPlus() {
+  const [tab, setTab] = useState("overview");
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div style={{ background: C.bg, minHeight: "100vh", color: C.text, fontFamily: "'Inter', -apple-system, sans-serif" }}>
+      {/* HEADER WITH OUTLINE STYLE & SVG BADGES */}
+      <div style={{ background: C.surface, padding: "20px 24px", borderBottom: `1px solid ${C.border}`, boxShadow: "0 1px 2px rgba(15, 23, 42, 0.02)" }}>
+        <div style={{ maxWidth: 1150, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+            <div style={{
+              background: C.accentSoft,
+              border: `1.5px solid ${C.accent}`,
+              width: 46,
+              height: 46,
+              borderRadius: 12,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontWeight: 800,
+              fontSize: 18,
+              color: C.accent,
+              boxShadow: "0 2px 8px rgba(79, 70, 229, 0.12)",
+            }}>I+</div>
+            <div>
+              <h1 style={{ color: C.text, fontSize: 22, fontWeight: 800, margin: 0, letterSpacing: "-0.02em" }}>
+                ImmoPlus CI — Dashboard Stratégique
+              </h1>
+              <div style={{ color: C.textMuted, fontSize: 12, marginTop: 2, fontWeight: 500, display: "flex", alignItems: "center", gap: 6 }}>
+                <Icon name="Activity" size={13} color={C.accent} />
+                <span>11 mois d&apos;analyse · 69 tables brutes · Sept. 2026</span>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <div style={{ background: C.surfaceLight, border: `1px solid ${C.border}`, padding: "6px 14px", borderRadius: 10, textAlign: "center" }}>
+              <div style={{ color: C.text, fontSize: 14, fontWeight: 800 }}>6 740</div>
+              <div style={{ color: C.textMuted, fontSize: 10, textTransform: "uppercase", fontWeight: 700 }}>Users Actifs</div>
+            </div>
+            <div style={{ background: C.redSoft, border: `1px solid ${C.redBorder}`, padding: "6px 14px", borderRadius: 10, textAlign: "center" }}>
+              <div style={{ color: C.red, fontSize: 14, fontWeight: 800 }}>267</div>
+              <div style={{ color: C.red, fontSize: 10, textTransform: "uppercase", fontWeight: 700 }}>Users Supprimés</div>
+            </div>
+            <div style={{ background: C.surfaceLight, border: `1px solid ${C.border}`, padding: "6px 14px", borderRadius: 10, textAlign: "center" }}>
+              <div style={{ color: C.text, fontSize: 14, fontWeight: 800 }}>748</div>
+              <div style={{ color: C.textMuted, fontSize: 10, textTransform: "uppercase", fontWeight: 700 }}>Résidences</div>
+            </div>
+            <div style={{ background: C.greenSoft, border: `1px solid ${C.greenBorder}`, padding: "6px 14px", borderRadius: 10, textAlign: "center" }}>
+              <div style={{ color: C.green, fontSize: 14, fontWeight: 800 }}>7,04M</div>
+              <div style={{ color: C.green, fontSize: 10, textTransform: "uppercase", fontWeight: 700 }}>GMV FCFA</div>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </div>
+
+      {/* OUTLINE NAVIGATION TABS WITH SVG ICONS */}
+      <div style={{ background: C.surface, borderBottom: `1px solid ${C.border}`, overflowX: "auto", whiteSpace: "nowrap", position: "sticky", top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: 1150, margin: "0 auto", display: "flex", gap: 8, padding: "10px 16px" }}>
+          {tabs.map((t) => {
+            const isActive = tab === t.id;
+            return (
+              <button key={t.id} onClick={() => setTab(t.id)}
+                style={{
+                  background: isActive ? C.accentSoft : "transparent",
+                  color: isActive ? C.accent : C.textMuted,
+                  border: isActive ? `1.5px solid ${C.accent}` : `1px solid ${C.border}`,
+                  borderRadius: 10,
+                  padding: "8px 14px",
+                  fontSize: 12.5,
+                  fontWeight: isActive ? 700 : 600,
+                  cursor: "pointer",
+                  transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                  whiteSpace: "nowrap",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 7,
+                  boxShadow: isActive ? "0 2px 6px rgba(79, 70, 229, 0.1)" : "none",
+                }}>
+                <Icon name={t.icon} size={15} color={isActive ? C.accent : C.textMuted} />
+                <span>{t.label}</span>
+              </button>
+            );
+          })}
         </div>
-      </main>
+      </div>
+
+      {/* TAB CONTENT CONTAINER WITH ANIMATED ENTRANCE */}
+      <div style={{ maxWidth: 1150, margin: "0 auto", padding: "20px 20px 60px" }}>
+        <div key={tab} className="tab-content-enter">
+          {tab === "overview" && <OverviewTab />}
+          {tab === "opportunities" && <OpportunitiesTab />}
+          {tab === "topclients" && <TopClientsTab />}
+          {tab === "status" && <StatusTab />}
+          {tab === "residences" && <ResidencesTab />}
+          {tab === "payments" && <PaymentsTab />}
+          {tab === "owners" && <OwnersTab />}
+          {tab === "engagement" && <EngagementTab />}
+          {tab === "features" && <FeaturesTab />}
+          {tab === "actions" && <ActionsTab />}
+          {tab === "pitch" && <PitchTab />}
+        </div>
+      </div>
     </div>
   );
 }
