@@ -24,20 +24,17 @@ export default function ImmoPlus() {
       <div style={{ background: C.surface, padding: "20px 24px", borderBottom: `1px solid ${C.border}`, boxShadow: "0 1px 2px rgba(15, 23, 42, 0.02)" }}>
         <div style={{ maxWidth: 1150, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <div style={{
-              background: C.accentSoft,
-              border: `1.5px solid ${C.accent}`,
-              width: 46,
-              height: 46,
-              borderRadius: 12,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontWeight: 800,
-              fontSize: 18,
-              color: C.accent,
-              boxShadow: "0 2px 8px rgba(79, 70, 229, 0.12)",
-            }}>I+</div>
+            <img
+              src="/immoplus-logo.png"
+              alt="ImmoPlus Logo"
+              style={{
+                width: 46,
+                height: 46,
+                borderRadius: 12,
+                objectFit: "cover",
+                boxShadow: "0 2px 8px rgba(79, 70, 229, 0.12)",
+              }}
+            />
             <div>
               <h1 style={{ color: C.text, fontSize: 22, fontWeight: 800, margin: 0, letterSpacing: "-0.02em" }}>
                 ImmoPlus CI — Dashboard Stratégique
